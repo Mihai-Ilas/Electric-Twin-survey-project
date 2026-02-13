@@ -1,22 +1,25 @@
-\# Usage:
+# Usage:
 
 In a terminal:
+
 Install dependencies:
-pip install -r requirements.txt
+
+**pip install -r requirements.txt**
 
 Navigate to the package location.
 
 Generate model (run only once):
-python generate\_model.py
+
+**python generate\_model.py**
 
 Query model:
-python query\_model.py "Your question here?"
+
+**python query\_model.py "Your question here?"**
 
 The "Artifacts" section contains more details about files containing interesting output information.
 
 
-
-\# Solution description:
+# Solution description:
 In order to compute similarity scores between questions, we need to model their meaning. While using an LLM for pair-wise comparison is the easiest method, this does not scale well to comparisons against a large dataset. Instead, we are generating semantic embeddings for each question, using an open-source base model. 'all-mpnet-base-v2' has a good trade-off bettween performance and memory size.
 
 Examining the data, we see that the questions follow a few major thematic groups: Politics, electric cars etc.
@@ -74,7 +77,7 @@ Finally, we expose an API where the user can query any question. We find both th
 
 
 
-\# Evaluation:
+# Evaluation:
 To evaluate the model, I used an LLM to assign one of the following labels to a subset of questions:
 POLITICS/COUNTRY, WORK, FOOD, CELEBRITIES, CARS, HEALTHCARE, BOOKS, OTHER. This was a one-off process and the results are written to data/ground\_truth.txt (do not delete this file!).
 
@@ -92,13 +95,16 @@ What do you think about the government support for electric car adoption? - Grou
 could fall in any of the POLITICS and ELECTRIC CARS clusters.
 
 
-
-\# Artifacts:
+# Artifacts:
 The following artifacts are generated and can be examined in the package:
+
 Under /data:
-clustering\_results.txt - the dataset organized by clusters (including their thematic anchors). Questions in each cluster are sorted in decreasing order based on the centrality to the cluster centroid (1 - cosine similarity).
-incorrect\_predictions.txt - the dataset model outputs which did not match the LLM labels during evaluation.
+
+- clustering\_results.txt - the dataset organized by clusters (including their thematic anchors). Questions in each cluster are sorted in decreasing order based on the centrality to the cluster centroid (1 - cosine similarity).
+
+- incorrect\_predictions.txt - the dataset model outputs which did not match the LLM labels during evaluation.
 
 Under /visualization:
-A 3D scatter plot of the clusters of embeddings, after 3D PCA was applied.
+
+- a 3D scatter plot of the clusters of embeddings, after 3D PCA was applied.
 
