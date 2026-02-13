@@ -1,0 +1,10 @@
+MODEL_NAME = 'all-mpnet-base-v2'
+INPUT_DATA_FILE = 'data/survey_questions.pkl'
+GROUND_THRUTHS_FILE = 'data/ground_truth.txt' 
+INCORRECT_PREDICTIONS_FILE = 'data/incorrect_predictions.txt'
+CLUSTERING_RESULTS_FILE = 'data/çlustering_results.txt'
+ENCODING_OUTPUTS_FILE = 'data/encoding_outputs.pkl'
+PICKLE_FILE = 'data/processed_model.pkl'
+INDIVIDUAL_SIMILARITY_THRESHOLD = 0.9
+CLUSTER_SIMILARITY_THRESHOLD = 0.7
+NOISE_CENTRALITY_THRESHOLD = 0.2
